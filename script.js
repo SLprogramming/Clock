@@ -45,4 +45,4 @@ const intervalId = setInterval(() => {
   digital.innerHTML = `${hour < 10 ? `0${hour}` : hour} : ${
     minute < 10 ? `0${minute}` : minute
   }`;
-}, 10);
+}, 1000);

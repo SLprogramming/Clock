@@ -68,7 +68,7 @@ h1 {
 .hour {
   height: 3px;
   background-color: rgb(248, 39, 32);
-  clip-path: polygon(25% 0%, 98% 0%, 98% 98%, 25% 98%);
+  clip-path: polygon(30% 0%, 98% 0%, 98% 98%, 30% 98%);
   transition: all 1s;
 }
 .number {
