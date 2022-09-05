@@ -26,20 +26,23 @@ const intervalId = setInterval(() => {
   second += 1;
   if (second == 60) {
     degForMinute += 6;
+
     second = 0;
     minute += 1;
     minuteTag.style.transform = `rotate(${degForMinute}deg)`;
+    if (minute % 5 == 0) {
+      degForHour += 2.5;
+      hourTag.style.transform = `rotate(${degForHour}deg)`;
+    }
   }
   if (minute == 60) {
-    degForHour += 6;
     minute = 0;
     hour += 1;
     if (hour > 12) {
       hour = 1;
     }
-    hourTag.style.transform = `rotate(${degForHour}deg)`;
   }
   digital.innerHTML = `${hour < 10 ? `0${hour}` : hour} : ${
     minute < 10 ? `0${minute}` : minute
   }`;
-}, 1000);
+}, 10);
