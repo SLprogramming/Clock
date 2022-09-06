@@ -3,12 +3,7 @@ const secondTag = document.querySelector(".second");
 const minuteTag = document.querySelector(".minute");
 const hourTag = document.querySelector(".hour");
 const digital = document.querySelector(".digital");
-let degForSecond = 0;
-let degForMinute = 0;
-let degForHour = 0;
-let second = 0;
-let minute = 0;
-let hour = 12;
+
 // add number Pointer
 for (i = 0; i < 12; i++) {
   const number = document.createElement("div");
@@ -20,29 +15,22 @@ for (i = 0; i < 12; i++) {
   clock.append(number);
 }
 
-const intervalId = setInterval(() => {
-  degForSecond += 6;
-  secondTag.style.transform = `rotate(${degForSecond}deg)`;
-  second += 1;
-  if (second == 60) {
-    degForMinute += 6;
-
-    second = 0;
-    minute += 1;
-    minuteTag.style.transform = `rotate(${degForMinute}deg)`;
-    if (minute % 5 == 0) {
-      degForHour += 2.5;
-      hourTag.style.transform = `rotate(${degForHour}deg)`;
-    }
-  }
-  if (minute == 60) {
-    minute = 0;
-    hour += 1;
-    if (hour > 12) {
-      hour = 1;
-    }
-  }
-  digital.innerHTML = `${hour < 10 ? `0${hour}` : hour} : ${
-    minute < 10 ? `0${minute}` : minute
-  }`;
-}, 1000);
+const realTime = () => {
+  let rtclock = new Date();
+  let degForSecond = 6;
+  let degForMinute = 6;
+  let degForHour = 0.5;
+  let second = rtclock.getSeconds();
+  let minute = rtclock.getMinutes();
+  let hour = rtclock.getHours();
+  let amPm = hour > 12 || minute > 0 ? "pm" : "am";
+  secondTag.style.transform = `rotate(${degForSecond * second}deg)`;
+  minuteTag.style.transform = `rotate(${degForMinute * minute}deg)`;
+  hourTag.style.transform = `rotate(${degForHour * minute}deg)`;
+  digital.innerHTML = `${hour >= 10 ? hour : "0" + hour} : ${
+    minute >= 10 ? minute : "0" + minute
+  } ${amPm}`;
+};
+setInterval(() => {
+  realTime();
+}, 500);
