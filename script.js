@@ -23,11 +23,12 @@ const realTime = () => {
   let second = rtclock.getSeconds();
   let minute = rtclock.getMinutes();
   let hour = rtclock.getHours();
+  let dHour = hour > 12 ? hour - 12 : hour;
   let amPm = hour > 12 || minute > 0 ? "pm" : "am";
   secondTag.style.transform = `rotate(${degForSecond * second}deg)`;
   minuteTag.style.transform = `rotate(${degForMinute * minute}deg)`;
   hourTag.style.transform = `rotate(${degForHour * minute}deg)`;
-  digital.innerHTML = `${hour >= 10 ? hour : "0" + hour} : ${
+  digital.innerHTML = `${dHour >= 10 ? dHour : "0" + dHour} : ${
     minute >= 10 ? minute : "0" + minute
   } ${amPm}`;
 };
