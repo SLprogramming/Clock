@@ -31,7 +31,7 @@ h1 {
   text-align: center;
   color: rgb(55, 255, 0);
   transform: rotate(-90deg);
-  padding: 4px;
+
   position: absolute;
   border-radius: 2px;
   width: 27%;
@@ -88,10 +88,13 @@ h1 {
 }
 @media only screen and (max-width: 500px) {
   .clock {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
   }
   .radius {
-    width: 200px;
+    width: 150px;
+  }
+  .digital {
+    font-size: 13px;
   }
 }
